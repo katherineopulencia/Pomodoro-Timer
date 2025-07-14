@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="app">
+        <h1> Pomodoro Timer </h1>
+        <div class="timer">
+            <svg class="progress-ring" width="200" height="200">
+                <circle class = "progress-ring_circle" stroke="white" stroke-width="8" fill=""transparent r="90" cx="100" cy="100">
+            </svg>
+        <div class="time" id="time-display">25:00</div>
+    </div>
+
+    <div class="session-counter">
+        Sessions completed: <span id="session-count">0</span>
+    </div>
+
+    <div class="top-controls">
+        <div class="music-control">
+            <span class="material-symbols-outlined icon" id="toggle-music">music_cast</span>
+            <audio id="bg-music" src="pure-theta-4-7hz-gentle-water-flow-351397.mp3" loop preload="auto"></audio>
+        </div>
+        <div class="theme-toggle">
+            <span class="material-symbols-outlined icon">routine</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    </div>
+    <audio id="alert-sound" src="clip_10_drippling_drops_short-3060.mp3" loop preload="auto"></audio>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
