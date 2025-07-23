@@ -1,46 +1,102 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-</head>
-<body>
-    <div class="app">
-        <h1> Pomodoro Timer </h1>
-        <div class="timer">
-            <svg class="progress-ring" width="200" height="200">
-                <circle class = "progress-ring_circle" stroke="#fb6f92" stroke-width="8" fill="transparent" r="90" cx="100" cy="100">
-            </svg>
-        <div class="time" id="time-display">25:00</div>
-    </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Pomodoro Timer 
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Quicksand:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
 
-    <div class="session-counter">
-        Sessions completed: <span id="session-count">0</span>
+ </head>
+ <body class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-100 via-pink-200 to-purple-200">
+  <div class="max-w-md w-full bg-white bg-opacity-80 rounded-3xl shadow-2xl p-8 flex flex-col items-center space-y-8 border-4 border-pink-300">
+   <h1 class="text-[25px] text-pink-600 mb-4 select-none">
+    Pomodoro Timer
+   </h1>
+   <div class="relative w-48 h-48 flex items-center justify-center">
+    <svg class="progress-ring" height="192" width="192" aria-hidden="true" role="img" >
+     <circle
+       stroke="#f9a8d4"
+       stroke-width="12"
+       fill="transparent"
+       r="88"
+       cx="96"
+       cy="96"
+     />
+     <circle
+       id="progressCircle"
+       stroke="#ec4899"
+       stroke-width="12"
+       fill="transparent"
+       r="88"
+       cx="96"
+       cy="96"
+       stroke-linecap="round"
+       stroke-dasharray="552"
+       stroke-dashoffset="0"
+     />
+    </svg>
+    <div class="timer-display absolute text-2xl text-pink-700 select-none tracking-widest pointer-events-none user-select-none">
+     25:00
     </div>
-
-    <div class="top-controls">
-        <div class="music-control">
-            <span class="material-symbols-outlined icon" id="toggle-music">music_cast</span>
-            <audio id="bg-music" src="pure-theta-4-7hz-gentle-water-flow-351397.mp3" loop preload="auto"></audio>
-        </div>
-        <div class="theme-toggle">
-            <span class="material-symbols-outlined icon">routine</span>
-        </div>
+   </div>
+   <div class="flex space-x-4 w-full justify-center">
+    <button aria-label="Start Timer" class="bg-pink-400 hover:bg-pink-500 active:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-200 flex items-center space-x-2" id="startBtn">
+     <i class="fas fa-play">
+     </i>
+     <span>
+      Start
+     </span>
+    </button>
+    <button aria-label="Pause Timer" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-200 flex items-center space-x-2" disabled="" id="pauseBtn">
+     <i class="fas fa-pause">
+     </i>
+     <span>
+      Pause
+     </span>
+    </button>
+    <button aria-label="Reset Timer" class="bg-pink-200 hover:bg-pink-300 active:bg-pink-400 text-pink-700 font-semibold py-3 px-6 rounded-full shadow-inner transition duration-200 flex items-center space-x-2" id="resetBtn">
+     <i class="fas fa-redo-alt">
+     </i>
+     <span>
+      Reset
+     </span>
+    </button>
+   </div>
+   <div class="w-full flex flex-col space-y-4">
+    <div class="flex justify-between items-center">
+     <label class="text-pink-700 font-semibold select-none" for="workDuration">
+      Work Duration (minutes):
+     </label>
+     <input aria-label="Set work duration in minutes" class="w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none" id="workDuration" max="60" min="1" type="number" value="25"/>
     </div>
-
-    <div class="controls">
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
+    <div class="flex justify-between items-center">
+     <label class="text-pink-700 font-semibold select-none" for="breakDuration">
+      Break Duration (minutes):
+     </label>
+     <input aria-label="Set break duration in minutes" class="w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none" id="breakDuration" max="30" min="1" type="number" value="5"/>
     </div>
+   </div>
+   <div class="w-full flex justify-center space-x-6 mt-6">
+    <button aria-label="Toggle sound on or off" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white p-3 rounded-full shadow-lg transition duration-200" id="soundToggle" title="Toggle Sound">
+     <i class="fas fa-volume-up text-xl" id="soundIcon">
+     </i>
+    </button>
+   </div>
+  </div>
+  <audio id="startSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg">
+  </audio>
+  <audio id="endSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg">
+  </audio>
+  <audio id="tickSound" preload="auto" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg">
+  </audio>
 
-    </div>
-    <audio id="alert-sound" src="clip_10_drippling_drops_short-3060.mp3" loop preload="auto"></audio>
 
-    <script src="script.js"></script>
-    
-</body>
+  <script src="script.js"></script>
+
+ </body>
 </html>
