@@ -12,3 +12,31 @@ body {
       transition: stroke-dashoffset 1s linear;
       transform-origin: 50% 50%;
     }
+    @media (max-width: 640px) {
+      .progress-ring, .timer-container {
+        width: 180px !important;
+        height: 180px !important;
+      }
+      .progress-ring circle {
+        stroke-width: 10px;
+        r: 80;
+      }
+      .timer-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .timer-buttons button {
+        width: 100%;
+      }
+      .duration-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .duration-controls div {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .duration-controls input {
+        width: 100%;
+      }
+    }

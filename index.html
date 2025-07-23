@@ -12,88 +12,75 @@
   <link rel="stylesheet" href="style.css">
 
  </head>
- <body class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-100 via-pink-200 to-purple-200">
-  <div class="max-w-md w-full bg-white bg-opacity-80 rounded-3xl shadow-2xl p-8 flex flex-col items-center space-y-8 border-4 border-pink-300">
-   <h1 class="text-[25px] text-pink-600 mb-4 select-none">
-    Pomodoro Timer
-   </h1>
-   <div class="relative w-48 h-48 flex items-center justify-center">
-    <svg class="progress-ring" height="192" width="192" aria-hidden="true" role="img" >
-     <circle
-       stroke="#f9a8d4"
-       stroke-width="12"
-       fill="transparent"
-       r="88"
-       cx="96"
-       cy="96"
-     />
-     <circle
-       id="progressCircle"
-       stroke="#ec4899"
-       stroke-width="12"
-       fill="transparent"
-       r="88"
-       cx="96"
-       cy="96"
-       stroke-linecap="round"
-       stroke-dasharray="552"
-       stroke-dashoffset="0"
-     />
-    </svg>
-    <div class="timer-display absolute text-2xl text-pink-700 select-none tracking-widest pointer-events-none user-select-none">
-     25:00
+ <body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-pink-100 via-pink-200 to-purple-200">
+  <div class="w-full max-w-md bg-white bg-opacity-80 rounded-3xl shadow-2xl p-6 sm:p-8 flex flex-col items-center space-y-6 sm:space-y-8 border-4 border-pink-300 mx-2">
+    <h1 class="text-xl sm:text-2xl md:text-[25px] text-pink-600 mb-2 sm:mb-4 select-none">
+      Pomodoro Timer
+    </h1>
+    <div class="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
+      <svg class="progress-ring" height="100%" width="100%" viewBox="0 0 192 192" aria-hidden="true" role="img">
+        <circle
+          stroke="#f9a8d4"
+          stroke-width="12"
+          fill="transparent"
+          r="88"
+          cx="96"
+          cy="96"
+        />
+        <circle
+          id="progressCircle"
+          stroke="#ec4899"
+          stroke-width="12"
+          fill="transparent"
+          r="88"
+          cx="96"
+          cy="96"
+          stroke-linecap="round"
+          stroke-dasharray="552"
+          stroke-dashoffset="0"
+        />
+      </svg>
+      <div class="timer-display absolute text-xl sm:text-2xl text-pink-700 select-none tracking-widest pointer-events-none user-select-none">
+        25:00
+      </div>
     </div>
-   </div>
-   <div class="flex space-x-4 w-full justify-center">
-    <button aria-label="Start Timer" class="bg-pink-400 hover:bg-pink-500 active:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-200 flex items-center space-x-2" id="startBtn">
-     <i class="fas fa-play">
-     </i>
-     <span>
-      Start
-     </span>
-    </button>
-    <button aria-label="Pause Timer" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-200 flex items-center space-x-2" disabled="" id="pauseBtn">
-     <i class="fas fa-pause">
-     </i>
-     <span>
-      Pause
-     </span>
-    </button>
-    <button aria-label="Reset Timer" class="bg-pink-200 hover:bg-pink-300 active:bg-pink-400 text-pink-700 font-semibold py-3 px-6 rounded-full shadow-inner transition duration-200 flex items-center space-x-2" id="resetBtn">
-     <i class="fas fa-redo-alt">
-     </i>
-     <span>
-      Reset
-     </span>
-    </button>
-   </div>
-   <div class="w-full flex flex-col space-y-4">
-    <div class="flex justify-between items-center">
-     <label class="text-pink-700 font-semibold select-none" for="workDuration">
-      Work Duration (minutes):
-     </label>
-     <input aria-label="Set work duration in minutes" class="w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none" id="workDuration" max="60" min="1" type="number" value="25"/>
+    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full justify-center timer-buttons">
+      <button aria-label="Start Timer" class="bg-pink-400 hover:bg-pink-500 active:bg-pink-600 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-lg transition duration-200 flex items-center justify-center space-x-2" id="startBtn">
+        <i class="fas fa-play"></i>
+        <span>Start</span>
+      </button>
+      <button aria-label="Pause Timer" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-lg transition duration-200 flex items-center justify-center space-x-2" disabled id="pauseBtn">
+        <i class="fas fa-pause"></i>
+        <span>Pause</span>
+      </button>
+      <button aria-label="Reset Timer" class="bg-pink-200 hover:bg-pink-300 active:bg-pink-400 text-pink-700 font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-inner transition duration-200 flex items-center justify-center space-x-2" id="resetBtn">
+        <i class="fas fa-redo-alt"></i>
+        <span>Reset</span>
+      </button>
     </div>
-    <div class="flex justify-between items-center">
-     <label class="text-pink-700 font-semibold select-none" for="breakDuration">
-      Break Duration (minutes):
-     </label>
-     <input aria-label="Set break duration in minutes" class="w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none" id="breakDuration" max="30" min="1" type="number" value="5"/>
+    <div class="w-full flex flex-col space-y-3 sm:space-y-4 duration-controls">
+      <div class="flex flex-col sm:flex-row justify-between items-center">
+        <label class="text-pink-700 font-semibold select-none text-sm sm:text-base" for="workDuration">
+          Work Duration (minutes):
+        </label>
+        <input aria-label="Set work duration in minutes" class="w-full sm:w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none py-1 sm:py-0" id="workDuration" max="60" min="1" type="number" value="25"/>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-center">
+        <label class="text-pink-700 font-semibold select-none text-sm sm:text-base" for="breakDuration">
+          Break Duration (minutes):
+        </label>
+        <input aria-label="Set break duration in minutes" class="w-full sm:w-20 text-center rounded-lg border-2 border-pink-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-300 outline-none py-1 sm:py-0" id="breakDuration" max="30" min="1" type="number" value="5"/>
+      </div>
     </div>
-   </div>
-   <div class="w-full flex justify-center space-x-6 mt-6">
-    <button aria-label="Toggle sound on or off" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white p-3 rounded-full shadow-lg transition duration-200" id="soundToggle" title="Toggle Sound">
-     <i class="fas fa-volume-up text-xl" id="soundIcon">
-     </i>
-    </button>
-   </div>
+    <div class="w-full flex justify-center mt-4 sm:mt-6">
+      <button aria-label="Toggle sound on or off" class="bg-pink-300 hover:bg-pink-400 active:bg-pink-500 text-white p-2 sm:p-3 rounded-full shadow-lg transition duration-200" id="soundToggle" title="Toggle Sound">
+        <i class="fas fa-volume-up text-lg sm:text-xl" id="soundIcon"></i>
+      </button>
+    </div>
   </div>
-  <audio id="startSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg">
-  </audio>
-  <audio id="endSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg">
-  </audio>
-  <audio id="tickSound" preload="auto" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg">
-  </audio>
+  <audio id="startSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+  <audio id="endSound" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="tickSound" preload="auto" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
 
 
   <script src="script.js"></script>
